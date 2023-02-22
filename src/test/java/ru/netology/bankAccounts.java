@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.Accounts.Account;
 import ru.netology.Accounts.CheckingAccount;
 import ru.netology.Accounts.CreditAccount;
+import ru.netology.Accounts.SavingsAccount;
 
 public class bankAccounts {
 
@@ -44,6 +45,17 @@ public class bankAccounts {
         Assertions.assertEquals(-100,test.getBalance());
         Assertions.assertFalse(test.add(500));
 
+    }
+
+    @Test
+    public void testSavingAccount(){
+        Account test = new SavingsAccount("test",1000,500);
+
+        Assertions.assertEquals("test", test.getName());
+        Assertions.assertEquals(1000,test.getBalance());
+        Assertions.assertTrue(test.pay(500));
+        Assertions.assertEquals(500L,test.getBalance());
+        Assertions.assertFalse(test.pay(1000));
     }
 
 
